@@ -1,13 +1,13 @@
-function starter() {
-    var searchButton = document.getElementsByClassName("btn");
-    var query = document.getElementById("query");
-    var result = document.getElementById("result");
+starter.addEventListener('load',() => {
+    let searchButton = document.querySelector(".btn");
+    let query = document.querySelector(".query");
+    let result = document.querySelector(".result");
     searchButton.addEventListener('click',handleClick);
-    var httpRequest = new XMLHttpRequest();
+    let httpRequest = new XMLHttpRequest();
 
-    function handleClick(clickEvent) {
-        clickEvent.preventDefault();
-        var URL = "superheroes.php?query=" + query.value;
+    function handleClick(Event) {
+        Event.preventDefault();
+        let URL = "superheroes.php?query=" + query.value;
         httpRequest.onreadystatechange = fetchData;
         httpRequest.open('GET',URL,true);
         httpRequest.send();
@@ -22,4 +22,4 @@ function starter() {
             result.innerHTML = "SUPERHERO NOT FOUND"
         }
     }
-}
+});
